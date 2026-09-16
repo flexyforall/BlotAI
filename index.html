@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Blot — Lobby</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/lobby.css">
+</head>
+<body>
+
+<div class="stage">
+  <!-- ============ iPhone mockup (landscape) ============ -->
+  <div class="device" id="device">
+    <div class="device__band"></div>
+    <div class="device__btn device__btn--power"></div>
+    <div class="device__btn device__btn--voldown"></div>
+    <div class="device__btn device__btn--volup"></div>
+    <div class="device__btn device__btn--action"></div>
+
+    <div class="device__screen">
+
+      <!-- ============ LOBBY (852 x 393) ============ -->
+      <div class="lobby" data-node-id="700:1173">
+
+        <!-- background effects -->
+        <div class="bg-fx" data-node-id="707:3619">
+          <img class="bg-fx__img" alt="" data-node-id="707:3614">
+          <div class="bg-fx__hue" data-node-id="707:3615"></div>
+        </div>
+
+        <!-- ============ play modes ============ -->
+        <div class="modes" data-node-id="700:1534">
+
+          <!-- Training -->
+          <button class="card card--side" data-mode="training" data-node-id="700:1535">
+            <img class="card__bg card__bg--training" alt="" data-node-id="700:1536">
+            <img class="card__char card__char--training" alt="" data-node-id="700:1537">
+            <img class="ellipses ellipses--training" alt="" data-node-id="700:1539">
+            <div class="card__text" data-node-id="700:1760">
+              <div class="card__copy">
+                <p class="card__title" data-node-id="700:1762">Training Game</p>
+                <p class="card__sub" data-node-id="700:1763">Play against random opponents</p>
+              </div>
+            </div>
+          </button>
+
+          <!-- Play Online (active) -->
+          <button class="card card--online" data-mode="online" data-node-id="700:1765">
+            <div class="online__art" data-node-id="700:1766">
+              <img class="masked ellipses--online-a" alt="" data-node-id="700:1771">
+              <img class="masked ellipses--online-b" alt="" data-node-id="700:1778">
+              <div class="online__sheen" data-node-id="700:1784"><img alt=""></div>
+              <img class="masked ellipses--online-a" alt="" data-node-id="700:1786">
+              <img class="masked ellipses--online-b" alt="" data-node-id="700:1793">
+              <img class="online__hero" alt="" data-node-id="700:1796">
+              <img class="masked ellipses--online-a" alt="" data-node-id="700:1801">
+              <img class="masked ellipses--online-b" alt="" data-node-id="700:1808">
+            </div>
+            <div class="card__text" data-node-id="700:1812">
+              <div class="card__copy">
+                <p class="card__title card__title--cream" data-node-id="700:1814">Play Online</p>
+                <p class="card__sub" data-node-id="700:1815">Play against random opponents</p>
+              </div>
+              <span class="btn" data-node-id="700:1816">
+                <span class="btn__label" data-node-id="700:1817">Play Now</span>
+                <img class="btn__glint" alt="" data-node-id="700:1818">
+              </span>
+              <img class="hairline hairline--online" alt="" data-node-id="700:1819">
+            </div>
+          </button>
+
+          <!-- Play with Friends -->
+          <button class="card card--side" data-mode="friends" data-node-id="700:1820">
+            <img class="card__bg card__bg--friends" alt="" data-node-id="700:1821">
+            <div class="card__char card__char--friends" data-node-id="700:1822">
+              <img alt=""><img alt="">
+            </div>
+            <img class="ellipses ellipses--friends" alt="" data-node-id="700:1824">
+            <div class="card__text" data-node-id="700:1827">
+              <div class="card__copy">
+                <p class="card__title" data-node-id="700:1829">Play with Friends</p>
+                <p class="card__sub card__sub--grey" data-node-id="700:1830">Battle your friends in Blot now</p>
+              </div>
+              <img class="hairline hairline--friends" alt="" data-node-id="700:1831">
+            </div>
+          </button>
+
+        </div>
+
+        <!-- ============ header ============ -->
+        <div class="header" data-node-id="707:3620">
+
+          <div class="profile" data-node-id="700:1517">
+            <div class="profile__pic sprite" data-node-id="700:1518"><img alt=""></div>
+            <div class="profile__info" data-node-id="700:1519">
+              <div class="profile__row" data-node-id="700:1520">
+                <p class="profile__name" data-node-id="700:1521">Artexcb</p>
+                <div class="rank" data-node-id="700:1522"><img class="rank__img" alt=""></div>
+              </div>
+              <div class="xp" data-node-id="700:1524">
+                <img class="xp__fill" alt="" data-node-id="700:1525">
+              </div>
+            </div>
+            <img class="profile__level" alt="" data-node-id="700:1526">
+          </div>
+
+          <div class="tabs" data-node-id="700:1184">
+            <div class="tab" style="width:114px" data-node-id="700:1185">
+              <div class="tab__stroke"></div>
+              <div class="tab__bevel" style="width:108px;justify-content:center">
+                <div class="tab__ico-ghost sprite"><img alt=""></div>
+                <p class="tab__label" data-node-id="700:1192">No ads</p>
+                <div class="tab__ico sprite" style="left:-1px;top:-4px;width:35px;height:32px"><img alt="" data-crop="noads"></div>
+              </div>
+            </div>
+            <div class="tab" style="width:78px" data-node-id="700:1194">
+              <div class="tab__stroke"></div>
+              <div class="tab__bevel">
+                <div class="tab__ico-ghost sprite"><img alt=""></div>
+                <p class="tab__label" data-node-id="700:1200">58</p>
+                <div class="tab__ico sprite" style="left:1px;top:-3px;width:33px;height:32px"><img alt="" data-crop="energy"></div>
+              </div>
+            </div>
+            <div class="tab" style="width:102px" data-node-id="700:1202">
+              <div class="tab__stroke"></div>
+              <div class="tab__bevel">
+                <div class="tab__ico-ghost sprite"><img alt=""></div>
+                <p class="tab__label" data-node-id="700:1208">3,458</p>
+                <div class="tab__ico sprite" style="left:2px;top:-3px;width:32px;height:32px"><img alt="" data-crop="coin"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ============ bottom icons ============ -->
+        <div class="dock" data-node-id="700:1511">
+          <div class="dock__left" data-node-id="700:1512">
+            <button class="dock__ico sprite" style="width:40px;height:38px" data-node-id="700:1513"><img alt="" data-crop="daily"></button>
+            <button class="dock__ico sprite" style="width:39px;height:35px" data-node-id="700:1514"><img alt="" data-crop="quests"></button>
+            <button class="dock__ico sprite" style="width:42px;height:38px" data-node-id="700:1515"><img alt="" data-crop="rewards"></button>
+          </div>
+          <button class="dock__ico sprite" style="width:39px;height:38px" data-node-id="700:1516"><img class="ico-settings" alt=""></button>
+        </div>
+
+        <div class="pill" data-node-id="700:1527">
+          <div class="pill__ring" data-node-id="700:1528"></div>
+          <p class="pill__text" data-node-id="700:1529">0/3</p>
+        </div>
+
+      </div>
+      <!-- ============ /LOBBY ============ -->
+
+      <div class="device__island"></div>
+      <div class="device__home"></div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/lobby.js"></script>
+</body>
+</html>

@@ -1,0 +1,541 @@
+/* ==========================================================================
+   Blot — Lobby screen
+   Figma: 00UpjDezeR9WRlZXc7DVxb  node 700:1173  (852 x 393, landscape)
+   All coordinates below are 1:1 with the Figma frame; the whole screen is
+   scaled as a unit via --s so it fits any viewport.
+   ========================================================================== */
+
+:root{
+  --w: 852px;          /* Figma frame width  */
+  --h: 393px;          /* Figma frame height */
+  --s: 1;              /* fit scale, set by lobby.js */
+  --bezel: 13px;       /* black bezel around the screen */
+  --cream: #fffbf2;
+  --ink: #0c0c0c;
+}
+
+*{ box-sizing: border-box; }
+
+html,body{
+  height:100%;
+  margin:0;
+  background:
+    radial-gradient(120% 90% at 50% 0%, #1b2537 0%, #0a0c10 60%, #06070a 100%);
+  font-family:'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow:hidden;
+}
+
+.stage{
+  height:100%;
+  display:grid;
+  place-items:center;
+}
+
+/* ==========================================================================
+   iPhone mockup (landscape)
+   ========================================================================== */
+
+.device{
+  position:relative;
+  width:  calc(var(--w) + var(--bezel) * 2);
+  height: calc(var(--h) + var(--bezel) * 2);
+  transform: scale(var(--s));
+  transform-origin:center center;
+  border-radius:60px;
+  padding:var(--bezel);
+  background:#0a0a0c;
+  box-shadow:
+    0 0 0 2px #2b2d33,
+    0 0 0 3.5px #6f7379,
+    0 0 0 5px #17181b,
+    0 30px 70px -12px rgba(0,0,0,.85),
+    0 8px 24px rgba(0,0,0,.6);
+}
+
+/* brushed-titanium highlight on the rail */
+.device__band{
+  position:absolute; inset:-5px;
+  border-radius:65px;
+  pointer-events:none;
+  background:
+    linear-gradient(200deg,
+      rgba(255,255,255,.34) 0%,
+      rgba(255,255,255,0)   14%,
+      rgba(255,255,255,0)   48%,
+      rgba(255,255,255,.18) 56%,
+      rgba(255,255,255,0)   70%,
+      rgba(255,255,255,.26) 96%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  padding:5px;
+}
+
+.device__btn{ position:absolute; background:#303238; border-radius:2px; }
+/* landscape: power on the bottom rail, volume on the top rail */
+.device__btn--power  { bottom:-3px; left:96px;  width:92px; height:3px; }
+.device__btn--volup  { top:-3px;    right:150px; width:56px; height:3px; }
+.device__btn--voldown{ top:-3px;    right:80px;  width:56px; height:3px; }
+.device__btn--action { top:-3px;    right:236px; width:34px; height:3px; }
+
+.device__screen{
+  position:relative;
+  width:var(--w);
+  height:var(--h);
+  border-radius:47px;
+  overflow:hidden;
+  background:var(--ink);
+}
+
+/* Dynamic Island — rotated to the left rail in landscape */
+.device__island{
+  position:absolute;
+  left:13px; top:50%;
+  transform:translateY(-50%);
+  width:33px; height:112px;
+  background:#000;
+  border-radius:18px;
+  z-index:50;
+  pointer-events:none;
+}
+.device__island::after{                 /* camera */
+  content:'';
+  position:absolute;
+  left:50%; bottom:11px;
+  transform:translateX(-50%);
+  width:11px; height:11px;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #16213a 0%, #070a12 60%, #000 100%);
+}
+
+/* home indicator — bottom rail in landscape sits on the right edge */
+.device__home{
+  position:absolute;
+  right:7px; top:50%;
+  transform:translateY(-50%);
+  width:5px; height:148px;
+  border-radius:3px;
+  background:rgba(255,255,255,.9);
+  z-index:50;
+  pointer-events:none;
+}
+
+/* ==========================================================================
+   Lobby frame
+   ========================================================================== */
+
+.lobby{
+  position:absolute; inset:0;
+  background:var(--ink);
+  overflow:hidden;
+}
+
+/* --- background effects (707:3619) --- */
+.bg-fx{ position:absolute; left:0; top:0; width:852px; height:393px; }
+.bg-fx__img{
+  position:absolute;
+  left:calc(50% + 15px); top:-44px;
+  width:948px; height:437px;
+  transform:translateX(-50%);
+  object-fit:cover;
+  pointer-events:none;
+}
+.bg-fx__hue{
+  position:absolute;
+  left:50%; top:-44px;
+  width:948px; height:437px;
+  transform:translateX(-50%);
+  background:#617085;
+  mix-blend-mode:hue;
+}
+
+/* generic cropped-sprite wrapper: box clips, inner <img> is the sprite sheet */
+.sprite{ position:relative; overflow:hidden; }
+.sprite > img{ position:absolute; max-width:none; pointer-events:none; }
+
+/* ==========================================================================
+   Play modes (700:1534)
+   ========================================================================== */
+
+.modes{
+  position:absolute;
+  left:50%; top:94px;
+  transform:translateX(-50%);
+  height:215px;
+  display:flex; gap:20px; align-items:flex-start;
+}
+
+.card{
+  position:relative;
+  height:215px;
+  border:0; padding:0; margin:0;
+  border-radius:8px;
+  overflow:hidden;
+  font:inherit;
+  text-align:left;
+  cursor:pointer;
+  transition:transform .28s cubic-bezier(.22,1,.36,1), opacity .28s ease;
+}
+
+.card--side{
+  width:262.667px;
+  background:#000;
+  opacity:.4;
+  backdrop-filter:blur(20px);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);
+}
+.card--side[data-mode="friends"]{ background:rgba(0,0,0,.6); }
+.card--side:hover{ opacity:.62; }
+
+.card--online{
+  width:444px;
+  background:#000;
+  box-shadow:
+    inset 0 0 0 1px #87b5f5,
+    0 0 0 4px rgba(135,181,245,.10),
+    0 18px 40px -18px rgba(135,181,245,.45);
+}
+
+.card__bg{
+  position:absolute;
+  top:0; width:481px; height:222px;
+  opacity:.5;
+  object-fit:cover;
+  pointer-events:none;
+}
+.card__bg--training{ left:-161.33px; }
+.card__bg--friends { left:-110px; }
+
+.card__char--training{
+  position:absolute;
+  left:calc(50% - 0.17px); top:23px;
+  width:199px; height:199px;
+  transform:translateX(-50%);
+  object-fit:cover;
+  pointer-events:none;
+  box-shadow:inset 0 4px 4px rgba(255,255,255,.5);
+}
+
+.card__char--friends{
+  position:absolute;
+  left:calc(50% + 37.17px); top:-9px;
+  width:337px; height:224px;
+  transform:translateX(-50%);
+  pointer-events:none;
+}
+.card__char--friends > img{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  max-width:none;
+  object-fit:cover;
+}
+
+/* --- glow ellipses (unmasked, side cards) ------------------------------- */
+/* Figma: box 687.563 x 262.474 expanded by inset(-24.32% -14.14%)          */
+.ellipses{
+  position:absolute;
+  width:882px; height:390.13px;
+  max-width:none;
+  pointer-events:none;
+}
+.ellipses--training{ left:-175.33px; top:13.43px; }
+.ellipses--friends { left:-261.22px; top:6.17px;  }
+
+/* ==========================================================================
+   Play Online card art (700:1766) — every layer is masked to the card shape
+   ========================================================================== */
+
+.online__art{ position:absolute; inset:0; pointer-events:none; }
+
+.masked{
+  position:absolute;
+  max-width:none;
+  -webkit-mask-size:444px 215px;
+          mask-size:444px 215px;
+  -webkit-mask-repeat:no-repeat;
+          mask-repeat:no-repeat;
+}
+/* 689.474 x 265.909 @ (-78.737, 87.407), inset(-31.99% -15.59% -41.73%) */
+.ellipses--online-a{
+  left:-186.23px; top:2.34px;
+  width:904.45px; height:461.94px;
+  -webkit-mask-position:186.23px -2.34px;
+          mask-position:186.23px -2.34px;
+}
+/* 689.474 x 175.909 @ (-81, 227), inset(-48.35% -15.59%) */
+.ellipses--online-b{
+  left:-188.49px; top:141.95px;
+  width:904.45px; height:346.01px;
+  -webkit-mask-position:188.49px -141.95px;
+          mask-position:188.49px -141.95px;
+}
+
+.online__sheen{
+  position:absolute;
+  left:-21px; top:-29px;
+  width:528px; height:244px;
+  opacity:.5;
+  -webkit-mask-size:444px 215px;  mask-size:444px 215px;
+  -webkit-mask-repeat:no-repeat;  mask-repeat:no-repeat;
+  -webkit-mask-position:21px 29px; mask-position:21px 29px;
+}
+.online__sheen > img{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  max-width:none;
+  object-fit:cover;
+  transform:scaleX(-1);          /* Figma: rotate(180deg) + scaleY(-1) */
+  mix-blend-mode:difference;
+}
+
+.online__hero{
+  position:absolute;
+  left:-56px; top:-61px;
+  width:569px; height:276px;
+  max-width:none;
+  object-fit:cover;
+  box-shadow:inset 0 4px 4px rgba(0,0,0,.25);
+}
+
+/* ==========================================================================
+   Card copy + CTA
+   ========================================================================== */
+
+.card__text{
+  position:absolute;
+  top:156px; width:413px;
+  display:flex; align-items:flex-end; justify-content:space-between;
+}
+.card--online .card__text,
+.card--side[data-mode="friends"] .card__text{ left:16px; }
+.card--side[data-mode="training"] .card__text{ left:15.67px; }
+
+.card__copy{
+  width:178px;
+  display:flex; flex-direction:column; gap:2px; align-items:flex-start;
+  flex-shrink:0;
+  word-break:break-word;
+}
+.card__title{
+  margin:0;
+  font-size:20px; font-weight:600; line-height:26px;
+  color:#fff;
+}
+.card__title--cream{ color:var(--cream); }
+.card__sub{
+  margin:0;
+  font-size:11px; font-weight:400; line-height:normal;
+  color:rgba(255,255,255,.5);
+}
+.card__sub--grey{ color:#a6a6af; }
+
+/* ellipse 325 hairline: 131 x 3 expanded by inset(-266.67% -6.11%) */
+.hairline{
+  position:absolute;
+  left:271px;
+  width:147px; height:19px;
+  max-width:none;
+  pointer-events:none;
+}
+.hairline--online { top:7px; }
+.hairline--friends{ top:4px; }
+
+/* --- Play Now button (700:1816) --- */
+.btn{
+  position:relative;
+  flex-shrink:0;
+  width:136px; height:32px;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+  border-radius:4px;
+  border:1px solid #fff;
+  background:linear-gradient(to bottom, #fff0b6 0%, #dcb565 48%, #b27b32 100%);
+  box-shadow:
+    0 3px 0 0 #38210a,
+    inset 0 1px 1px 0 rgba(255,245,204,.6);
+  transition:transform .09s ease, box-shadow .09s ease, filter .2s ease;
+}
+.card--online:hover .btn{ filter:brightness(1.06); }
+.card--online:active .btn,
+.btn.is-pressed{
+  transform:translateY(3px);
+  box-shadow:0 0 0 0 #38210a, inset 0 1px 1px 0 rgba(255,245,204,.6);
+}
+.btn__label{
+  position:relative;
+  font-size:13px; font-weight:600; line-height:normal;
+  color:#322315;
+  white-space:nowrap;
+}
+/* ellipse 324 glint: 147 x 5 expanded by inset(-160% -5.44%) */
+.btn__glint{
+  position:absolute;
+  left:-17px; top:-9px;
+  width:163px; height:21px;
+  max-width:none;
+  pointer-events:none;
+}
+
+/* ==========================================================================
+   Header (707:3620)
+   ========================================================================== */
+
+.header{
+  position:absolute;
+  left:20px; top:20px; width:812px;
+  display:flex; align-items:flex-start; justify-content:space-between;
+}
+
+.profile{ position:relative; display:flex; gap:8px; align-items:center; }
+
+.profile__pic{ width:43.636px; height:48px; flex-shrink:0; }
+.profile__pic > img{ left:-14%; top:-1.82%; width:114%; height:103.64%; }
+
+.profile__info{
+  width:150px;
+  display:flex; flex-direction:column; gap:4px; align-items:flex-start;
+  flex-shrink:0;
+}
+.profile__row{ display:flex; gap:2px; align-items:center; }
+.profile__name{
+  margin:0;
+  font-size:16px; font-weight:600; line-height:normal;
+  color:var(--cream);
+  white-space:nowrap;
+}
+
+.rank{ position:relative; width:49px; height:24px; flex-shrink:0; }
+.rank__img{
+  position:absolute;
+  left:-2.512px; top:-7.258px;
+  width:48.16px; height:35.955px;
+  max-width:none;
+  object-fit:cover;
+  transform:rotate(-1.89deg);
+  pointer-events:none;
+}
+
+.xp{
+  width:150px; height:5px;
+  border-radius:2.5px;
+  background:rgba(255,255,255,.08);
+  padding-right:99px;              /* Figma: fill occupies 51px */
+  flex-shrink:0;
+}
+.xp__fill{
+  display:block;
+  width:100%; height:5px;
+  border-radius:2.5px;
+  object-fit:cover;
+  backdrop-filter:blur(10px);
+}
+
+.profile__level{
+  position:absolute;
+  left:3px; top:29px;
+  width:31px; height:23px;
+  object-fit:cover;
+  pointer-events:none;
+}
+
+/* --- stat tabs (700:1184) --- */
+.tabs{ display:flex; gap:8px; align-items:center; }
+
+.tab{ position:relative; height:38px; flex-shrink:0; }
+.tab__stroke{
+  position:absolute; inset:0;
+  border:1px solid rgba(115,116,117,.4);
+  border-radius:5px;
+}
+.tab__bevel{
+  position:absolute;
+  left:3px; top:3px; height:32px;
+  display:flex; gap:8px; align-items:center;
+  padding-left:9px; padding-right:12px;
+  border-radius:4px;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(10px);
+}
+.tab__label{
+  margin:0;
+  font-size:16px; font-weight:600; line-height:normal;
+  color:var(--cream);
+  white-space:nowrap;
+}
+.tab__ico-ghost{ width:22px; height:20px; opacity:0; flex-shrink:0; }
+.tab__ico{ position:absolute; }
+
+/* ==========================================================================
+   Bottom dock (700:1511) + 0/3 pill (700:1527)
+   ========================================================================== */
+
+.dock{
+  position:absolute;
+  left:20px; top:335px; width:812px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.dock__left{ display:flex; gap:24px; align-items:center; }
+
+.dock__ico{
+  border:0; padding:0; margin:0;
+  background:none;
+  cursor:pointer;
+  flex-shrink:0;
+  transition:transform .16s cubic-bezier(.34,1.56,.64,1), filter .16s ease;
+}
+.dock__ico:hover{ transform:translateY(-2px) scale(1.06); filter:brightness(1.12); }
+.dock__ico:active{ transform:translateY(0) scale(.96); }
+.ico-settings{ left:-28.36%; top:-28.79%; width:158.21%; height:160.61%; }
+
+.pill{
+  position:absolute;
+  left:41px; top:323px;
+  display:flex; gap:10px; align-items:center; justify-content:center;
+  padding:4px 6px;
+  border:1px solid #f2f2f2;
+  border-radius:100px;
+  background:var(--ink);
+  backdrop-filter:blur(5px);
+}
+.pill__ring{
+  position:absolute;
+  left:0; top:0; width:29px; height:20px;
+  border:0.2px solid #818181;
+  border-radius:100px;
+}
+.pill__text{
+  position:relative;
+  margin:0;
+  font-size:10px; font-weight:600; line-height:1.2;
+  letter-spacing:-0.2px;
+  text-align:center;
+  white-space:nowrap;
+  word-break:break-word;
+  background:linear-gradient(to bottom, #fffbf2 42.857%, #646464 100%);
+  -webkit-background-clip:text;
+          background-clip:text;
+  color:transparent;
+}
+
+/* ==========================================================================
+   Selecting a mode shifts focus between the three cards
+   ========================================================================== */
+
+.modes.is-training .card[data-mode="training"],
+.modes.is-friends  .card[data-mode="friends"]{
+  opacity:1;
+  box-shadow:
+    inset 0 0 0 1px #87b5f5,
+    0 0 0 4px rgba(135,181,245,.10),
+    0 18px 40px -18px rgba(135,181,245,.45);
+}
+.modes.is-training .card--online,
+.modes.is-friends  .card--online{
+  opacity:.45;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ transition-duration:.01ms !important; animation-duration:.01ms !important; }
+}
