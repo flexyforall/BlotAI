@@ -1,0 +1,34 @@
+<svg width="110" height="40" viewBox="0 0 110 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_i_738_1014)">
+<mask id="path-1-inside-1_738_1014" fill="white">
+<path d="M0 8C0 3.58172 3.58172 0 8 0H102C106.418 0 110 3.58172 110 8V32C110 36.4183 106.418 40 102 40H8C3.58172 40 0 36.4183 0 32V8Z"/>
+</mask>
+<path d="M0 8C0 3.58172 3.58172 0 8 0H102C106.418 0 110 3.58172 110 8V32C110 36.4183 106.418 40 102 40H8C3.58172 40 0 36.4183 0 32V8Z" fill="#091526"/>
+<g clip-path="url(#paint0_diamond_738_1014_clip_path)" data-figma-skip-parse="true" mask="url(#path-1-inside-1_738_1014)"><g transform="matrix(0.055 0.0215 -0.059125 0.02 55 20)"><rect x="0" y="0" width="995.967" height="994.86" fill="url(#paint0_diamond_738_1014)" opacity="1" shape-rendering="crispEdges"/><rect x="0" y="0" width="995.967" height="994.86" transform="scale(1 -1)" fill="url(#paint0_diamond_738_1014)" opacity="1" shape-rendering="crispEdges"/><rect x="0" y="0" width="995.967" height="994.86" transform="scale(-1 1)" fill="url(#paint0_diamond_738_1014)" opacity="1" shape-rendering="crispEdges"/><rect x="0" y="0" width="995.967" height="994.86" transform="scale(-1)" fill="url(#paint0_diamond_738_1014)" opacity="1" shape-rendering="crispEdges"/></g></g><path d="M8 0V1H102V0V-1H8V0ZM110 8H109V32H110H111V8H110ZM102 40V39H8V40V41H102V40ZM0 32H1V8H0H-1V32H0ZM8 40V39C4.13401 39 1 35.866 1 32H0H-1C-1 36.9706 3.02944 41 8 41V40ZM110 32H109C109 35.866 105.866 39 102 39V40V41C106.971 41 111 36.9706 111 32H110ZM102 0V1C105.866 1 109 4.13401 109 8H110H111C111 3.02944 106.971 -1 102 -1V0ZM8 0V-1C3.02944 -1 -1 3.02944 -1 8H0H1C1 4.13401 4.13401 1 8 1V0Z" data-figma-gradient-fill="{&#34;type&#34;:&#34;GRADIENT_DIAMOND&#34;,&#34;stops&#34;:[{&#34;color&#34;:{&#34;r&#34;:1.0,&#34;g&#34;:1.0,&#34;b&#34;:1.0,&#34;a&#34;:1.0},&#34;position&#34;:0.0},{&#34;color&#34;:{&#34;r&#34;:1.0,&#34;g&#34;:1.0,&#34;b&#34;:1.0,&#34;a&#34;:0.0},&#34;position&#34;:1.0}],&#34;transform&#34;:{&#34;m00&#34;:110.0,&#34;m01&#34;:-118.250,&#34;m02&#34;:59.124996185302734,&#34;m10&#34;:43.0,&#34;m11&#34;:40.0,&#34;m12&#34;:-21.499998092651367},&#34;opacity&#34;:1.0,&#34;blendMode&#34;:&#34;NORMAL&#34;,&#34;stopsVar&#34;:[{&#34;color&#34;:{&#34;r&#34;:1.0,&#34;g&#34;:1.0,&#34;b&#34;:1.0,&#34;a&#34;:1.0},&#34;position&#34;:0.0},{&#34;color&#34;:{&#34;r&#34;:1.0,&#34;g&#34;:1.0,&#34;b&#34;:1.0,&#34;a&#34;:0.0},&#34;position&#34;:1.0}],&#34;visible&#34;:true}" mask="url(#path-1-inside-1_738_1014)"/>
+<rect x="1.25" y="1.25" width="107.5" height="37.5" rx="6.75" fill="url(#paint1_radial_738_1014)" fill-opacity="0.2" stroke="url(#paint2_linear_738_1014)" stroke-width="0.5"/>
+</g>
+<defs>
+<filter id="filter0_i_738_1014" x="0" y="0" width="110" height="44" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_738_1014"/>
+</filter>
+<clipPath id="paint0_diamond_738_1014_clip_path"><path d="M8 0V1H102V0V-1H8V0ZM110 8H109V32H110H111V8H110ZM102 40V39H8V40V41H102V40ZM0 32H1V8H0H-1V32H0ZM8 40V39C4.13401 39 1 35.866 1 32H0H-1C-1 36.9706 3.02944 41 8 41V40ZM110 32H109C109 35.866 105.866 39 102 39V40V41C106.971 41 111 36.9706 111 32H110ZM102 0V1C105.866 1 109 4.13401 109 8H110H111C111 3.02944 106.971 -1 102 -1V0ZM8 0V-1C3.02944 -1 -1 3.02944 -1 8H0H1C1 4.13401 4.13401 1 8 1V0Z"/></clipPath><linearGradient id="paint0_diamond_738_1014" x1="0" y1="0" x2="500" y2="500" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</linearGradient>
+<radialGradient id="paint1_radial_738_1014" cx="0" cy="0" r="1" gradientTransform="matrix(102.5 89.0625 -22.2222 36.0648 55 20)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#89BBFF"/>
+<stop offset="1"/>
+</radialGradient>
+<linearGradient id="paint2_linear_738_1014" x1="55" y1="0.999999" x2="77.2295" y2="64.1785" gradientUnits="userSpaceOnUse">
+<stop stop-color="white" stop-opacity="0.2"/>
+<stop offset="1" stop-color="#87B5F5"/>
+</linearGradient>
+</defs>
+</svg>
